@@ -1,88 +1,38 @@
-//1. querySelelctorAll
-//#ordered-dinos - parent id
-
+//#unordered-dinos - parent id
 // variables
 let dinoList1 = document.querySelectorAll('#ordered-dinos li');
-//let dinoList2 = document.querySelectorAll('#unordered-dinos');
-//let row = document.querySelector('#row');
-//let row2 = document.querySelectorAll('#row');
-//let destroyAll = document.querySelector('#destroy-all');
-//let body = document.querySelector('body');
-
-
-function olStrike(){
-    for(let i = 0; i < dinoList1.length; i++){
-        dinoList1[i].addEventListener('click', function(){
-            console.log(dinoList1[i].innerText);
-            dinoList1[i].style.textDecoration = "line-through";
-        })
-    }
-}
-
-olStrike(); 
-
-//#unordered-dinos - parent id
-
-let dinoList2 = document.querySelector('#unordered-dinos');
-
-dinoList2.addEventListener('click', function(event){
-    let listItem = event.target;
-    console.log(listItem.innerText);
-    listItem.style.opacity = '0';
-});
-
-
-//#row - parent id
-
-let row = document.querySelector('#row')  
-
-row.addEventListener("click", function(event){
-    let rowItem = event.target; 
-    rowItem.style.width = "0px"
-});
-
-//#burn - parent id
-//let destroyAll = document.querySelectorAll('#destroy-all');
-
-//destroyAll.add addEventListener('click', function(){
-    extinguishAll(olStrike, dinoList2, row );
-//})
-
-/*
-// variables
-//let dinoList1 = document.querySelectorAll('#ordered-dinos li');
-//let dinoList2 = document.querySelectorAll('#unordered-dinos');
-//let row = document.querySelector('#row');
-//let row2 = document.querySelectorAll('#row');
-//let destroyAll = document.querySelector('#destroy-all');
-//let body = document.querySelector('body');
+let dinoList2 = document.querySelectorAll('#unordered-dinos li');
+let imgs = document.querySelectorAll('#row img');
+let destroyAll = document.querySelector('#destroy-all');
+let body = document.querySelector('body');
 
 //test 
 console.log(dinoList1);
 console.log(dinoList2);
-console.log(row);
-console.log(row2);
+console.log(imgs);
 
-//programs
+//set individual eventlisteners for crossout , fadeout, collapse
 crossOut(dinoList1);
 fadeOut(dinoList2);
-collapseImg(row);
+collapseImg(imgs);
 
 //destroy all
 
+//setup event listener , call exinguish all on click
 destroyAll.addEventListener('click', function(){
-    extinguishAll(dinoList1, dinoList2, row2);
+    extinguishAll(dinoList1, dinoList2,imgs);
 })
 
 //Functions
 
+//sets event listener for cross out on each row 
 function crossOut(array){
     for (let i = 0; i < array.length; i++) {
 
         array[i].addEventListener('click', function(){
 
             if (array[i].style.textDecoration !== "Line-through solid red"){
-                array[i].style.textDecoration = "Line-trhough solid red";
+                array[i].style.textDecoration = "Line-through solid red";
             } else {
                 array[i].style.textDecoration = "none";
             }
@@ -90,6 +40,7 @@ function crossOut(array){
     }
 }
 
+//sets event listener for fade out on each row 
 function fadeOut(array){
     for (let i = 0; i < array.length; i++){
 
@@ -103,17 +54,21 @@ function fadeOut(array){
         })
     }
 }
+//sets event listener for collapse each image when clicked on
+function collapseImg(imgs){
 
-function collapseImg(imgVar){
-    imgVar.addEventListener('click', function(event){
-        element = event.target;
+    for (let i = 0; i < imgs.length; i++){
+        imgs[i].addEventListener('click', function(event){
+            element = event.target;
 
-        if (element.style.width !== "0px"){
-            element.style.width = "0px";
-        }
-    })
+            if (element.style.width !== "0px"){
+                element.style.width = "0px";
+            }
+        }) 
+    }
 }
 
+//for running all the effects 
 function extinguishAll(array1, array2, array3){
 
     for(let i = 0; i < array1.length; i++){
@@ -131,4 +86,3 @@ function extinguishAll(array1, array2, array3){
     }
 }
 
-*/
